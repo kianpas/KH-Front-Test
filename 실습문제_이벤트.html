@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>@실습문제_이벤트</h1>
+    <!-- 버튼 태그는 타입 생략하면 submit임 
+        btn-generate를 클릭하면, 아래데이터를 javascript객체로 먼저 만들고,
+        배열로 관리한다. 배열을 순회하면서, button태그를 동적으로 생성한다.
+        생성된 버튼 태그를 클릭하면, 각각의 url로 페이지 이동해야 한다
+        
+        버튼 value   이동할 url
+        --------------------------
+        네이버    네이버주소
+        구글 
+        KH
+        와삼
+    
+    -->
+    <button type="button" id="btn-generate">버튼생성</button>
+    <div class="btn-wrapper"></div>
+    <script>
+      var vArr = [
+        { siteName: "네이버", url: "http://naver.com" },
+        { siteName: "구글", url: "http://google.com" },
+        { siteName: "KH", url: "https://iei.or.kr/main/main.kh" },
+        { siteName: "W3", url: "https://www.w3schools.com/" },
+      ];
+
+      document
+        .getElementById("btn-generate")
+        .addEventListener("click", function () {
+          for (var i = 0; i < 4; i++) {
+            document.querySelector(".btn-wrapper").innerHTML +=
+              '<button type="button" id=' +
+              "btn" +
+              i +
+              ">" +
+              vArr[i].siteName +
+              "</button>" +
+              vArr[i].url +
+              "<br>";
+          }
+
+          for (var j = 0; j < 4; j++) {
+            console.log(vArr[j].url);
+            document.querySelector("#btn" + j).onclick = function () {
+              open(vArr[j].url, "_self");
+            };
+          }
+
+          //오류나서 일일히 해봤던 것
+          // document.querySelector("#btn0").onclick = function () {
+          //   open(vArr[0].url, "_self");
+          // };
+          // document.querySelector("#btn1").onclick = function () {
+          //   open(vArr[1].url, "_self");
+          // };
+          // document.querySelector("#btn2").onclick = function () {
+          //   open(vArr[2].url, "_self");
+          // };
+          // document.querySelector("#btn3").onclick = function () {
+          //   open(vArr[3].url, "_self");
+          // };
+        });
+    </script>
+  </body>
+</html>
