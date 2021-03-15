@@ -12,7 +12,8 @@
         btn-generate를 클릭하면, 아래데이터를 javascript객체로 먼저 만들고,
         배열로 관리한다. 배열을 순회하면서, button태그를 동적으로 생성한다.
         생성된 버튼 태그를 클릭하면, 각각의 url로 페이지 이동해야 한다
-        
+        생성자사용했어야함
+
         버튼 value   이동할 url
         --------------------------
         네이버    네이버주소
@@ -45,14 +46,17 @@
               vArr[i].url +
               "<br>";
           }
-
+          //담을 공간 펑션 n을 만들어 주는 것
           for (var j = 0; j < 4; j++) {
             console.log(vArr[j].url);
-            document.querySelector("#btn" + j).onclick = function () {
-              open(vArr[j].url, "_self");
-            };
+            (function (n) {
+              document
+                .querySelector("#btn" + n)
+                .addEventListener("click", function () {
+                  open(vArr[n].url, "_self");
+                });
+            })(j);
           }
-
           //오류나서 일일히 해봤던 것
           // document.querySelector("#btn0").onclick = function () {
           //   open(vArr[0].url, "_self");

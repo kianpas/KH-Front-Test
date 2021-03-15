@@ -67,10 +67,14 @@
     <script>
       function onecheck(chk) {
         var pro = document.getElementsByName("product");
-
+        //매개변수 chk는 체크박스를 받는 것이다.
+        //for문을 돌면서 체크되지 않은 것을 모두 체크해제 한다
         for (var i = 0; i < pro.length; i++) {
           if (pro[i] != chk) {
             pro[i].checked = false;
+            // (pro[i] != ckBox) && (pro[i].checked = false); 이것도 가능
+            //a&&b : a(조건식)가 참이면 b(실행문)를 실행
+            //a||b : a(조건식)가 거짓이면 b(실행문)를 실행
           }
         }
       }
